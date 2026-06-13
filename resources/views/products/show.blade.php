@@ -21,7 +21,7 @@
 
             <p class="text-secondary">
             Category:
-            {{ $product->category->name }}
+            {{ $product->category->name ?? 'No Category' }}
             </p>
 
             <p>
