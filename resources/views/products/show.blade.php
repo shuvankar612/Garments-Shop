@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link href="https://jsdelivr.net" rel="stylesheet">
 </head>
 <body>
 
@@ -15,13 +15,13 @@
 
             <img src="{{asset('products/'.$product->image)}}"
             class="img-fluid rounded mb-4"
-            width="300px" height="300px">
+            width="300px" height="300px" alt="{{$product->name}}">
 
             <h2>{{$product->name}}</h2>
 
-           <p class="text-secondary">
-        Category: {{ $product->category->name ?? 'No Category' }}
-        </p>
+            <p class="text-secondary">
+            Category: {{ $product->category->name ?? 'No Category' }}
+            </p>
             
             <p>
             <strong>Description:</strong>
@@ -51,7 +51,7 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://jsdelivr.net"></script>
     
 </body>
 </html>
