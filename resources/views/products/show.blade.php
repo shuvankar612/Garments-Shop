@@ -19,11 +19,10 @@
 
             <h2>{{$product->name}}</h2>
 
-            <p class="text-secondary">
-            Category:
-            {{ $product->category->name ?? 'No Category' }}
-            </p>
-
+           <p class="text-secondary">
+        Category: {{ $product->category->name ?? 'No Category' }}
+        </p>
+            
             <p>
             <strong>Description:</strong>
             {{ $product->description }}
