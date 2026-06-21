@@ -5,6 +5,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RunningProjectController;
+use App\Http\Controllers\CareerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -91,8 +93,16 @@ Route::get('/categories/{id}/products',
 [ProductController::class, 'categoryProducts'])
 ->name('categories.products');
 
+Route::resource('running-projects', RunningProjectController::class);
+
+Route::resource('careers', CareerController::class);
+
 require __DIR__.'/auth.php';
 
 Route::get('/test', function () {
     return "Laravel Working";
+});
+
+Route::get('/test123', function () {
+    return "TEST OK";
 });
