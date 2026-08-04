@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2026 at 05:23 PM
+-- Generation Time: Aug 04, 2026 at 09:21 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `garments-shop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `careers`
+--
+
+CREATE TABLE `careers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `job_title` varchar(255) NOT NULL,
+  `department` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `experience` varchar(255) NOT NULL,
+  `vacancy` int(11) NOT NULL,
+  `description` longtext DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `careers`
+--
+
+INSERT INTO `careers` (`id`, `job_title`, `department`, `location`, `experience`, `vacancy`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'Shopping Mall', 'Garments', 'Kolkata', '5Years', 20, 'Different kinds of Garments Shirts, shoes, etc. for men, women, kids.', 1, '2026-06-28 09:08:09', '2026-06-28 09:08:49'),
+(4, 'Project Manager', 'IT', 'Bengaluru', '15', 200, 'IT Project Manager', 1, '2026-06-28 09:20:49', '2026-06-28 09:22:07');
 
 -- --------------------------------------------------------
 
@@ -119,7 +146,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (6, '2026_05_15_072015_create_products_table', 2),
 (7, '2026_06_05_140330_create_orders_table', 3),
 (8, '2026_06_05_141527_create_orders_table', 4),
-(9, '2026_06_06_160459_create_carts_table', 5);
+(9, '2026_06_06_160459_create_carts_table', 5),
+(10, '2026_06_21_130239_create_running_projects_table', 6),
+(11, '2026_06_21_130421_create_careers_table', 6);
 
 -- --------------------------------------------------------
 
@@ -215,6 +244,31 @@ INSERT INTO `products` (`id`, `category_id`, `name`, `price`, `description`, `im
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `running_projects`
+--
+
+CREATE TABLE `running_projects` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `location` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `description` longtext DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `running_projects`
+--
+
+INSERT INTO `running_projects` (`id`, `title`, `location`, `image`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(3, 'Garments-Shop', 'Mumbai', '1782657300.jpg', 'Garments-Shop Description', 1, '2026-06-28 09:03:02', '2026-06-28 09:05:00'),
+(4, 'Men Shoes', 'UK', '1782658144.jpg', 'Men Shoes', 1, '2026-06-28 09:17:47', '2026-06-28 09:19:04');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -232,6 +286,12 @@ CREATE TABLE `users` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `careers`
+--
+ALTER TABLE `careers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `carts`
@@ -285,6 +345,12 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `running_projects`
+--
+ALTER TABLE `running_projects`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -294,6 +360,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `careers`
+--
+ALTER TABLE `careers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `carts`
@@ -317,7 +389,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -336,6 +408,12 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `products`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `running_projects`
+--
+ALTER TABLE `running_projects`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
