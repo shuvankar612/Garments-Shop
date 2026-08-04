@@ -5,13 +5,11 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet"
 href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-
 </head>
 
 <body>
 
 <div class="container mt-5">
-
 
 <h2 class="mb-4">Running Projects</h2>
 
@@ -23,21 +21,20 @@ href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
 <a href="{{ route('running-projects.create') }}"
    class="btn btn-primary mb-3">
-   Add Project:
+    Add Project:
 </a>
 
-<table id="projectsTable"
-class="table table-bordered">
+<table id="projectsTable" class="table table-bordered">
 
     <thead>
-        <tr>
-            <th>ID:</th>
-            <th>Image:</th>
-            <th>Title:</th>
-            <th>Location:</th>
-            <th>Status:</th>
-            <th>Action:</th>
-        </tr>
+    <tr>
+        <th>ID:</th>
+        <th>Image:</th>
+        <th>Title:</th>
+        <th>Location:</th>
+        <th>Status:</th>
+        <th>Action:</th>
+    </tr>
     </thead>
 
     <tbody>
@@ -49,10 +46,10 @@ class="table table-bordered">
             <td>{{ $project->id }}</td>
 
             <td>
-
                 @if($project->image)
 
-                    <img src="{{ asset('running-projects/'.$project->image) }}"
+                    <img src="{{ asset('running-projects/' . $project->image) }}"
+                    alt="Project Image"
                     width="80">
 
                 @else
@@ -60,7 +57,6 @@ class="table table-bordered">
                     No Image
 
                 @endif
-
             </td>
 
             <td>{{ $project->title }}</td>
@@ -68,7 +64,6 @@ class="table table-bordered">
             <td>{{ $project->location }}</td>
 
             <td>
-
                 @if($project->status)
 
                     <span class="badge bg-success">
@@ -82,17 +77,16 @@ class="table table-bordered">
                     </span>
 
                 @endif
-
             </td>
 
             <td>
 
-                <a href="{{ route('running-projects.edit',$project->id) }}"
-                   class="btn btn-warning btn-sm">
-                   Edit:
+                <a href="{{ route('running-projects.edit', $project->id) }}"
+                class="btn btn-warning btn-sm">
+                Edit:
                 </a>
 
-                <form action="{{ route('running-projects.destroy',$project->id) }}"
+                <form action="{{ route('running-projects.destroy', $project->id) }}"
                       method="POST"
                       style="display:inline">
 
@@ -100,9 +94,9 @@ class="table table-bordered">
                     @method('DELETE')
 
                     <button type="submit"
-                            class="btn btn-danger btn-sm"
-                            onclick="return confirm('Delete this project?')">
-                            Delete:
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('Delete this project?')">
+                    Delete:
                     </button>
 
                 </form>

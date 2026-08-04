@@ -56,15 +56,23 @@ class CareerController extends Controller
 
     public function update(Request $request, Career $career)
     {
-        $career->update([
-            'job_title' => $request->job_title,
-            'department' => $request->department,
-            'location' => $request->location,
-            'experience' => $request->experience,
-            'vacancy' => $request->vacancy,
-            'description' => $request->description,
-            'status' => $request->status ?? 1,
+            $request->validate([
+            'job_title' => 'required',
+            'department' => 'required',
+            'location' => 'required',
+            'experience' => 'required',
+            'vacancy' => 'required',
         ]);
+
+        $career->update($request->only([
+            'job_title',
+            'department',
+            'location',
+            'experience',
+            'vacancy',
+            'description',
+            'status'
+        ]));
 
         return redirect()
             ->route('careers.index')
