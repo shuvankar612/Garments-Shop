@@ -10,15 +10,13 @@ class DummyDataSeeder extends Seeder
 {
     public function run(): void
     {
-        // -------------------------------------------------------------
         // 1. Running Projects: 10টি ইমেজ ডাউনলোড এবং ডেটাবেজে ইনসার্ট
-        // -------------------------------------------------------------
         $path = public_path('running-projects');
         if (!File::exists($path)) {
             File::makeDirectory($path, 0755, true);
         }
 
-        $locations = ['Dhaka', 'Chittagong', 'Sylhet', 'Rajshahi', 'Khulna'];
+        $locations = ['Kolkata', 'Howrah', 'Bengaluru', 'Kerala', 'Mumbai', 'Delhi', 'Chennai', 'Hyderabad', 'Pune', 'Jaipur'];
 
         for ($i = 1; $i <= 10; $i++) {
             $imageName = time() . '_' . $i . '.jpg';
@@ -33,16 +31,15 @@ class DummyDataSeeder extends Seeder
                 'title'       => 'Commercial Interior Project ' . $i,
                 'location'    => $locations[array_rand($locations)],
                 'image'       => $imageName,
-                'description' => 'This is a detailed description for running project number ' . $i . '. It includes modern architectural and interior design features.',
+                'description' => 'This is a detailed description for running project number ' . $i . '. 
+                It includes modern architectural and interior design features.',
                 'status'      => 1,
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]);
         }
 
-        // -------------------------------------------------------------
         // 2. Careers: 10টি ডামি জব সার্কুলার ইনসার্ট
-        // -------------------------------------------------------------
         $jobs = [
             ['title' => 'Senior Laravel Developer', 'dept' => 'Engineering', 'exp' => '3-5 Years', 'vacancy' => 2],
             ['title' => 'Frontend Developer (React/Vue)', 'dept' => 'Engineering', 'exp' => '2-3 Years', 'vacancy' => 3],
@@ -63,7 +60,8 @@ class DummyDataSeeder extends Seeder
                 'location'    => $locations[array_rand($locations)],
                 'experience'  => $job['exp'],
                 'vacancy'     => $job['vacancy'],
-                'description' => 'We are looking for an experienced ' . $job['title'] . ' to join our growing team. Responsibilities include executing projects effectively and coordinating with cross-functional teams.',
+                'description' => 'We are looking for an experienced ' . $job['title'] . ' to join our growing team. 
+                Responsibilities include executing projects effectively and coordinating with cross-functional teams.',
                 'status'      => 1,
                 'created_at'  => now(),
                 'updated_at'  => now(),
