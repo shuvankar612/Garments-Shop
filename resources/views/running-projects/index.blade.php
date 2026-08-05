@@ -58,7 +58,16 @@ $(document).ready(function () {
             { data: 'image', name: 'image', orderable: false, searchable: false },
             { data: 'status', name: 'status' },
             { data: 'action', name: 'action', orderable: false, searchable: false }
-        ]
+        ],
+        initComplete: function () {
+            // DataTables রেন্ডার হওয়ার পর সার্চ ইনপুটে name এবং id যোগ করা
+            $(this.api().table().container())
+                .find('input[type="search"]')
+                .attr({
+                    'id': 'projectsTable_search',
+                    'name': 'projectsTable_search'
+                });
+        }
     });
 });
 </script>
