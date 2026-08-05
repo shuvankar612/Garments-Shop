@@ -2,8 +2,7 @@
 <html>
 <head>
     <title>Add Running Project</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -28,45 +27,44 @@
         @csrf
 
         <div class="mb-3">
-            <label class="form-label">Project Title:</label>
-
+            <label for="title" class="form-label">Project Title:</label>
             <input type="text"
-            name="title"
-            class="form-control"
-            required>
+                   id="title"
+                   name="title"
+                   class="form-control"
+                   required>
         </div>
 
         <div class="mb-3">
-        <label class="form-label">Location:</label>
-
+            <label for="location" class="form-label">Location:</label>
             <input type="text"
-            name="location"
-            class="form-control">
+                   id="location"
+                   name="location"
+                   class="form-control">
         </div>
 
         <div class="mb-3">
-        <label class="form-label">Project Image:</label>
-
+            <label for="image" class="form-label">Project Image:</label>
             <input type="file"
-            name="image"
-            class="form-control">
+                   id="image"
+                   name="image"
+                   class="form-control">
         </div>
 
         <div class="mb-3">
-        <label class="form-label">Description:</label>
-
-            <textarea name="description"
-            class="form-control"
-            rows="5"></textarea>
+            <label for="description" class="form-label">Description:</label>
+            <textarea id="description"
+                      name="description"
+                      class="form-control"
+                      rows="5"></textarea>
         </div>
 
         <button type="submit" class="btn btn-success">
-        Save Project:
+            Save Project:
         </button>
 
-        <a href="{{ route('running-projects.index') }}"
-        class="btn btn-secondary">
-        Back:
+        <a href="{{ route('running-projects.index') }}" class="btn btn-secondary">
+            Back:
         </a>
 
     </form>

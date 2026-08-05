@@ -4,14 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Models\Career;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class CareerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $careers = Career::latest()->get();
+        if ($request->ajax()) {
+            $data = Career::latest();
 
-        return view('careers.index', compact('careers'));
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('status', function($row){
+                    return $row->status == 1 
+                        ? '<span class="badge bg-success">Active</span>' 
+                        : '<span class="badge bg-danger">Inactive</span>';
+                })
+                ->addColumn('action', function($row){
+                    $editUrl = route('careers.edit', $row->id);
+                    $deleteUrl = route('careers.destroy', $row->id);
+
+                    $btn = '<a href="'.$editUrl.'" class="btn btn-warning btn-sm m-1">Edit</a>';
+                    $btn .= '<form action="'.$deleteUrl.'" method="POST" style="display:inline-block;">
+                                '.csrf_field().'
+                                '.method_field('DELETE').'
+                                <button type="submit" class="btn btn-danger btn-sm m-1" onclick="return confirm(\'Delete this career?\')">Delete</button>
+                             </form>';
+                    return $btn;
+                })
+                ->rawColumns(['status', 'action'])
+                ->make(true);
+        }
+
+        return view('careers.index');
     }
 
     public function create()
@@ -56,7 +81,7 @@ class CareerController extends Controller
 
     public function update(Request $request, Career $career)
     {
-            $request->validate([
+        $request->validate([
             'job_title' => 'required',
             'department' => 'required',
             'location' => 'required',
