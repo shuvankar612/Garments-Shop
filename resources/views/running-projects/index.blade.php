@@ -60,12 +60,22 @@ $(document).ready(function () {
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ],
         initComplete: function () {
-            // DataTables রেন্ডার হওয়ার পর সার্চ ইনপুটে name এবং id যোগ করা
-            $(this.api().table().container())
-                .find('input[type="search"]')
+            var api = this.api();
+            var container = $(api.table().container());
+
+            // ১. সার্চ ইনপুটে id, name এবং autocomplete="off" সেট করা
+            container.find('input[type="search"]')
                 .attr({
                     'id': 'projectsTable_search',
-                    'name': 'projectsTable_search'
+                    'name': 'projectsTable_search',
+                    'autocomplete': 'off'
+                });
+
+            // ২. 'Show entries' সিলেক্ট ফিল্ডেও id ও name নিশ্চিত করা
+            container.find('select')
+                .attr({
+                    'id': 'projectsTable_length_select',
+                    'name': 'projectsTable_length_select'
                 });
         }
     });
