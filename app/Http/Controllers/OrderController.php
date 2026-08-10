@@ -81,7 +81,7 @@ class OrderController extends Controller
     /**
      * Update Order Status
      */
-    public function updateStatus(Request $request, $id)
+    public function updateStatus(Request $request, int $id)
     {
         $order = Order::findOrFail($id);
 
