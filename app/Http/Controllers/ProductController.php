@@ -119,7 +119,7 @@ public function index(Request $request)
         ->with('success', 'Product Deleted Successfully');
     }
 
-    public function categoryProducts($id)
+    public function categoryProducts(int $id)
 {
     $category = Category::findOrFail($id);
 
@@ -129,7 +129,7 @@ public function index(Request $request)
     compact('products', 'category'));
 }
 
-public function addToCart($id)
+public function addToCart(int $id)
 {
     $product = Product::findOrFail($id);
 
@@ -156,7 +156,7 @@ public function checkout()
     return view('products.checkout');
 }
 
-public function removeCart($id)
+public function removeCart(int $id)
 {
     Cart::findOrFail($id)->delete();
 
@@ -164,7 +164,7 @@ public function removeCart($id)
         ->with('success', 'Item Removed From Cart');
 }
 
-public function increaseQuantity($id)
+public function increaseQuantity(int $id)
 {
     $cart = Cart::findOrFail($id);
 
@@ -175,7 +175,7 @@ public function increaseQuantity($id)
     return redirect()->back();
 }
 
-public function decreaseQuantity($id)
+public function decreaseQuantity(int $id)
 {
     $cart = Cart::findOrFail($id);
 
